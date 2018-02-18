@@ -55,6 +55,34 @@ export class RestService {
       );
 
   }
+
+  loginUser(data) {
+    const uri = this.base_url+'user';
+
+    const obj =JSON.stringify({
+      "str_Email": data.username,
+      "str_Password": data.password
+    });
+
+
+
+   //debugger;
+
+    return this.http.post(uri, obj)
+        .map(res => {
+         // console.log(res);
+
+          return res;
+        },
+        error => {
+          this.error = error;
+         // console.log(error);
+
+          return error;
+        } // error path
+      );
+
+  }
   deleteData(id) {
     const uri = this.base_url+'user/delete';
     const obj =JSON.stringify({

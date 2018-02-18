@@ -8,7 +8,7 @@
       <td>Name</td>
       <td>Mobile</td>
       <td>G</td>
-      <td>Type</td>
+      <td >Type</td>
       <td colspan="2">Actions</td>
   </tr>
   </thead>
@@ -17,7 +17,7 @@
           <td>{{ obj.str_FullName }}</td>
           <td>{{ obj.int_Cellnumber }}</td>
           <td>{{ obj.int_Sex }}</td>
-          <td>{{ obj.bln_AgreetoTerms }}</td>
+          <td class="icon-{{ obj.bln_AgreetoTerms }}"> </td>
           <td><button button (click)="delete(obj.sn)"  class="btn btn-danger "> Delete</button></td>
       </tr>
   </tbody>

@@ -13,7 +13,7 @@ export class AppComponent {
   title = 'Welcome';
   constructor(private restService:RestService) {
     this.restService.loderShow(false);
-    this.isClientApp=true;
+    this.isClientApp=false;
    }
 }
 

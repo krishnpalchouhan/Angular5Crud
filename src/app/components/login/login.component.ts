@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../services/rest.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { error } from 'util';
+import {appRoutes} from "./../../routerConfig";
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Route } from '@angular/router/src/config';
+
 
 @Component({
   selector: 'app-login',
@@ -10,29 +14,31 @@ import { error } from 'util';
 })
 export class LoginComponent implements OnInit {
 
-  title = 'Add Coin';
+  title = 'Login Page';
   angForm: FormGroup;
   result:any;
-  constructor(private restService: RestService, private fb: FormBuilder) {
+  constructor(private restService: RestService, private fb: FormBuilder ,private router:Router) {
     this.createForm();
     this.restService.loderShow(false);
+
+
    }
   createForm() {
     this.angForm = this.fb.group({
-      name: ['kp', Validators.required ],
-      mobile: ['', Validators.required ],
-      gender:['Female',Validators.nullValidator],
-      dob:['1990-02-22',Validators.nullValidator],
-      rgb:['Red',Validators.nullValidator],
-      email:['',Validators.nullValidator]
+      username: ['kp', Validators.required ],
+      password: ['kp', Validators.required ]
 
    });
   }
+  home(){
+    this.router.navigate(['/index']);
+
+    //this.navigate(['']);
+  }
   save(rgb) {
     this.restService.loderShow(true);
-    this.angForm['value'].rgb=rgb;
       try{
-        this.restService.saveData(this.angForm['value']).subscribe(
+        this.restService.loginUser(this.angForm['value']).subscribe(
           res=>{
             this.result = res['msg'];
             this.restService.loderShow(false);
@@ -40,25 +46,24 @@ export class LoginComponent implements OnInit {
           },
           error => {
             this.result = error['message'];
+            if (this.angForm['value'].username=="kp" && this.angForm['value'].password=="kp"){
+              console.log("this.result");
+              this.home();
+            }else{
+              console.log("else");
+            }
             this.restService.loderShow(false);
             console.log(this.result);
           }
         )
-        this.angForm = this.fb.group({
-        name: ['', Validators.required ],
-        mobile: ['', Validators.required ],
-        gender:['Female',Validators.nullValidator],
-        dob:['1990-02-22',Validators.nullValidator],
-        rgb:['Red',Validators.nullValidator],
-        email:['',Validators.nullValidator]
-      })
       }catch(ex){
-        alert("not Saved");
+
       }
 
 
 
   }
   ngOnInit() {
+
   }
 }

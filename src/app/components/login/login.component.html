@@ -1,116 +1,49 @@
-<div class="container">
-  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+<div class="login">
+  <div class="well">
 
-    <!-- Div Panel -->
-    <div class="panel panel-success" >
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 login-body ">
 
-        <!-- Panel Heading -->
-        <div class="panel-heading">
-          <div class="panel-title">Sign In</div>
-        </div><!-- End panel heading -->
+          <!-- Div Panel -->
+          <div class="panel panel-success" >
 
-        <!-- Panel body -->
-        <div class="panel-body" >
+            <!-- End panel heading -->
 
-          <form class="form-horizontal" [formGroup]="angForm" novalidate>
+              <!-- Panel body -->
+              <div class="panel-body" >
 
-            <!-- Username -->
-            <div class="input-group input-username">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span><input type="text" class="form-control" name="username" placeholder="username" autofocus>
-            </div>
+                <form class="form-horizontal" [formGroup]="angForm" novalidate>
 
-            <!-- Password -->
-            <div class="input-group input-password">
-              <span class="input-group-addon"><i class="fa fa-lock"></i></span><input type="password" class="form-control" name="password" placeholder="password">
-            </div>
+                  <!-- Username -->
+                  <div class="input-group input-username">
+                    <span class="input-group-addon "><i class="fa fa-user"></i></span><input type="text" class="form-control input-login" name="username" formControlName="username" placeholder="username" autofocus #username>
+                  </div>
 
-            <div class="input-group checkbox-remember">
-              <div class="checkbox">
-                <label><input id="login-remember" type="checkbox" name="remember" value="1"> Remember me</label>
-              </div>
-            </div>
+                  <!-- Password -->
+                  <div class="input-group input-password">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span><input type="password" class="form-control input-login" name="password" formControlName="password"  placeholder="password" #password>
+                  </div>
+<!--
+                  <div class="input-group checkbox-remember">
+                    <div class="checkbox">
+                      <label><input id="login-remember" type="checkbox" name="remember" value="1"> Remember me</label>
+                    </div>
+                  </div>
+                -->
+                  <div class="form-group login-button">
+                    <div class="col-sm-12 controls">
+                      <button (click)="save('red')" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-info  login-button-form">Login</button>
 
-            <div class="form-group login-button">
-              <div class="col-sm-12 controls">
-                <a href="#" class="btn btn-info login-button-form">Login  </a>
-              </div>
-            </div>
+                    </div>
+                  </div>
 
-          </form><!-- ENd form -->
-        </div><!-- ENd panel body -->
-    </div><!-- End panel group -->
+                </form><!-- ENd form -->
+              </div><!-- ENd panel body -->
+          </div><!-- End panel group -->
 
-  </div><!-- End col div -->
-</div><!-- End container -->
-<div class="container">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      {{ title }}
-    </div>
-    <div class="panel-body">
-      <form [formGroup]="angForm" novalidate>
-        <div class="form-group">
-          <label class="col-md-4">Name</label>
-          <input type="text" class="form-control" formControlName="name" #name />
+        </div><!-- End col div -->
+           <!-- Panel Heading -->
+      <div class="panel-heading login-heading-botton">
+          <div class="panel-title nav-wrapper ">Sign In</div>
         </div>
-        <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['name'].errors.required">
-            Name is required.
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4">Mobile</label>
-          <input type="tel" class="form-control"
-          pattern="[0-9]*"
-          minlength="10"
-          maxlength="10"  formControlName="mobile" #mobile/>
-        </div>
-        <div *ngIf="angForm.controls['mobile'].invalid && (angForm.controls['mobile'].dirty || angForm.controls['mobile'].touched)" class="alert alert-danger">
-
-          <div *ngIf="angForm.controls['mobile'].errors.minlength">
-            Mobile should be 10 digit
-          </div>
-          <div *ngIf="angForm.controls['mobile'].errors.pattern">
-            Mobile numberr should be only numbers
-          </div>
-          <div *ngIf="angForm.controls['mobile'].errors.required">
-              Mobile is required
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4">Date of Birth</label>
-          <input type="date" class="form-control" formControlName="dob" #dob/>
-        </div>
-        <div *ngIf="angForm.controls['dob'].invalid && (angForm.controls['dob'].dirty || angForm.controls['dob'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['dob'].errors.required">
-            Date of birth is required.
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4">Gender</label>
-          <!--<input type="text" class="form-control" formControlName="gender" #gender/>-->
-          <select  class="form-control" formControlName="gender" #gender>
-            <option>Female</option>
-            <option>Male</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4">Email</label>
-          <input type="text" class="form-control" formControlName="email" #email />
-        </div>
-        <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['email'].errors.required">
-            Email is required.
-          </div>
-        </div>
-          <div class="form-group min-length-div">
-            <button (click)="save('red')" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-danger">R</button>
-            <button (click)="save('blue')" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">B</button>
-            <button (click)="save('green')" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">G</button>
-
-          </div>
-      </form>
-    </div>
   </div>
-
-</div>
+</div><!-- End container -->

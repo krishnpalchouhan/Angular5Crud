@@ -1,0 +1,12 @@
+.icon-green{
+  background: url(./../../assets/icon-green.png)  20px 20px;
+  background-repeat: no-repeat;
+}
+.icon-red{
+  background: url(./../../assets/icon-red.png)  20px 20px;
+  background-repeat: no-repeat;
+}
+.icon-blue{
+  background: url(./../../assets/icon-blue.png)  20px 20px;
+  background-repeat: no-repeat;
+}
