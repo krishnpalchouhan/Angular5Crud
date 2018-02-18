@@ -1,8 +1,52 @@
-<div class="panel-heading nav-wrapper">
-  {{ title }}
-</div>
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+    <!-- Div Panel -->
+    <div class="panel panel-success" >
+
+        <!-- Panel Heading -->
+        <div class="panel-heading">
+          <div class="panel-title">Sign In</div>
+        </div><!-- End panel heading -->
+
+        <!-- Panel body -->
+        <div class="panel-body" >
+
+          <form class="form-horizontal" [formGroup]="angForm" novalidate>
+
+            <!-- Username -->
+            <div class="input-group input-username">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span><input type="text" class="form-control" name="username" placeholder="username" autofocus>
+            </div>
+
+            <!-- Password -->
+            <div class="input-group input-password">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span><input type="password" class="form-control" name="password" placeholder="password">
+            </div>
+
+            <div class="input-group checkbox-remember">
+              <div class="checkbox">
+                <label><input id="login-remember" type="checkbox" name="remember" value="1"> Remember me</label>
+              </div>
+            </div>
+
+            <div class="form-group login-button">
+              <div class="col-sm-12 controls">
+                <a href="#" class="btn btn-info login-button-form">Login  </a>
+              </div>
+            </div>
+
+          </form><!-- ENd form -->
+        </div><!-- ENd panel body -->
+    </div><!-- End panel group -->
+
+  </div><!-- End col div -->
+</div><!-- End container -->
 <div class="container">
   <div class="panel panel-primary">
+    <div class="panel-heading">
+      {{ title }}
+    </div>
     <div class="panel-body">
       <form [formGroup]="angForm" novalidate>
         <div class="form-group">

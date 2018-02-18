@@ -8,9 +8,12 @@ import { RestService } from './services/rest.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Welcome to crypto world';
+  isClientApp:boolean;
+
+  title = 'Welcome';
   constructor(private restService:RestService) {
     this.restService.loderShow(false);
+    this.isClientApp=true;
    }
 }
 

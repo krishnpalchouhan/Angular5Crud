@@ -4,13 +4,13 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { error } from 'util';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class CreateComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
-  title = 'Add Customer Detail';
+  title = 'Add Coin';
   angForm: FormGroup;
   result:any;
   constructor(private restService: RestService, private fb: FormBuilder) {
@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
    }
   createForm() {
     this.angForm = this.fb.group({
-      name: ['', Validators.required ],
+      name: ['kp', Validators.required ],
       mobile: ['', Validators.required ],
       gender:['Female',Validators.nullValidator],
       dob:['1990-02-22',Validators.nullValidator],
